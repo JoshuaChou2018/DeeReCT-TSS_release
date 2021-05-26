@@ -541,8 +541,8 @@ if __name__ == '__main__':
                     print(_info)
                     pass
                 else:
-                    #try:
+                    try:
                         scan(sess, model, _chr=_chr, scan_start=scan_start, scan_end=scan_end, pos=pos, strand=strand,
                                  mm=mm, reducenoise=reducenoise)
-                    #except:
+                    except:
                         print('*error*' * 10)
