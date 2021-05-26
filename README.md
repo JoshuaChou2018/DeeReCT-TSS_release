@@ -113,32 +113,32 @@ Before continuing, make sure your file hierarchy goes like this:
 
 ```
 -- root
- |-- scan_regions (contains files for scanning in bed format)
-  |-- colon.RNAseq.bedgraph.merged.bed
-    |-- colon.RNAseq.bedgraph.merged.0.bed
-    |-- colon.RNAseq.bedgraph.merged.1.bed
-    |-- ...
- |-- model
-  |-- colon_model
-    |-- model_best.npz
- |-- data (where you store your data)
-   |-- colon (the cell type your are going to work with)
-    |-- cage
-    |-- rnaseq
-      |-- Aligned.sortedByCoord.out.bam.+.depth
-      |-- Aligned.sortedByCoord.out.bam.-.depth
+   |-- scan_regions (contains files for scanning in bed format)
+        |-- colon.RNAseq.bedgraph.merged.bed
+        |-- colon.RNAseq.bedgraph.merged.0.bed
+        |-- colon.RNAseq.bedgraph.merged.1.bed
+        |-- ...
+   |-- model
+        |-- colon_model
+             |-- model_best.npz
+   |-- data (where you store your data)
+        |-- colon (the cell type your are going to work with)
+             |-- cage
+             |-- rnaseq
+                 |-- Aligned.sortedByCoord.out.bam.+.depth
+                 |-- Aligned.sortedByCoord.out.bam.-.depth
 ```
 
 Then we can scan with well trained model, eg:
 
 ```
 python 05.scan.app.py 0 data/colon \
- model/colon_model/model_best.npz \
- /scan_output \
- scan_regions/colon.RNAseq.bedgraph.merged \
- data/colon/rnaseq/Aligned.sortedByCoord.out.bam.+.depth \
- data/colon/rnaseq/Aligned.sortedByCoord.out.bam.-.depth \
- ref/hg19/hg19.fa
+     model/colon_model/model_best.npz \
+     /scan_output \
+     scan_regions/colon.RNAseq.bedgraph.merged \
+     data/colon/rnaseq/Aligned.sortedByCoord.out.bam.+.depth \
+     data/colon/rnaseq/Aligned.sortedByCoord.out.bam.-.depth \
+     ref/hg19/hg19.fa
 ```
 
 Command above will start scanning all regions specified in the file `scan_regions/colon.RNAseq.bedgraph.merged.0.bed` and store all scanning result under `data/colon/scan_output`
@@ -147,8 +147,8 @@ To merge all individual scanning results into a complete bedgraph, run:
 
 ```
 python 06.p2bed.py data/colon/scan_output \
- data/colon/scan_output.bedgraph \
- scan_regions/colon.RNAseq.bedgraph.merged.bed
+     data/colon/scan_output.bedgraph \
+     scan_regions/colon.RNAseq.bedgraph.merged.bed
 ```
 
 Command above will output the merged complete bedgraph of all scanned positions, eg: `data/colon/scan_output.bedgraph`
