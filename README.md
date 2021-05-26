@@ -89,8 +89,8 @@ Currently, we only release codes of data preprocessing and genome-wide scanning.
 Calculate the covegra of each base for both CAGE data and RNASeq data
 
 ```
-./01.cage2cov.sh path/to/bam
-./01.rnaseq2cov.sh path/to/bam
+bash src/01.cage2cov.sh path/to/bam
+bash src/01.rnaseq2cov.sh path/to/bam
 ```
 
 
@@ -100,13 +100,13 @@ Calculate the covegra of each base for both CAGE data and RNASeq data
 Calculate regions for scanning based on RNASeq data
 
 ```
-./05.getScanRegion.sh
+bash src/05.getScanRegion.sh
 ```
 
 To speed up, we can split scanning regions into multiple files and each file contains around 20,000,000 query positions, before running the script below, please modify the content according to your need.
 
 ```
-python 05.scan_region_split.py
+python src/05.scan_region_split.py
 ```
 
 Before continuing, make sure your file hierarchy goes like this:
@@ -132,7 +132,7 @@ Before continuing, make sure your file hierarchy goes like this:
 Then we can scan with well trained model, eg:
 
 ```
-python 05.scan.app.py 0 data/colon \
+python src/05.scan.app.py 0 data/colon \
      model/colon_model/model_best.npz \
      /scan_output \
      scan_regions/colon.RNAseq.bedgraph.merged \
@@ -146,7 +146,7 @@ Command above will start scanning all regions specified in the file `scan_region
 To merge all individual scanning results into a complete bedgraph, run:
 
 ```
-python 06.p2bed.py data/colon/scan_output \
+python src/06.p2bed.py data/colon/scan_output \
      data/colon/scan_output.bedgraph \
      scan_regions/colon.RNAseq.bedgraph.merged.bed
 ```
@@ -156,7 +156,7 @@ Command above will output the merged complete bedgraph of all scanned positions,
 To post-process prediction, call TSS peaks and get the final prediction result:
 
 ```
-bash 06.clusterTSS.sh
+bash src/06.clusterTSS.sh
 ```
 
 
