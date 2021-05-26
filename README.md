@@ -163,17 +163,13 @@ bash 06.clusterTSS.sh
 
 ## Comparison
 
-In binary classification part, we compare our method with:
+We compare our method with:
 
 - PromID, source code provided under `/compare`
 - TransPrise, source code provided under `/compare`
 - PseDNC-DL, web server provided @ [http://nsclbio.jbnu.ac.kr/tools/iPSW/](http://nsclbio.jbnu.ac.kr/tools/iPSW/)
 
-In scaning part, we compare our method with:
 
-- PromID, source code provided under `/compare`
-
-	
 
 ## Complete Data
 
