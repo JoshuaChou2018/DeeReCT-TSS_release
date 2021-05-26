@@ -1,0 +1,11 @@
+
+.idea/
+.ipynb_checkpoints/
+.vscode/
+__pycache__/
+*.npy
+.DS_Store
+data/all.con
+*.fasta
+test.py
+*.ipynb

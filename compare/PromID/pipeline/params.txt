@@ -1,0 +1,22 @@
+#some comment
+mix_rate = 0.0
+mix_amount = 0.0
+model_output = model_1
+test_results_file = output.csv
+batch_size = 100
+hidden_dims = 300
+nb_epoch = 50
+pos_seq = p_1
+neg_seq = n_1
+learning_split = 0.9
+testing_split = 0.0
+validation_split =0.1
+read_model=0
+model_file = new_model_xx
+#nb_filter, filter_length, pool_length
+architecture = 100,7,0
+patience = 100
+#class 1 weight
+cw1 = 1.0
+kr1 = 0.7
+kr2 = 0.1
