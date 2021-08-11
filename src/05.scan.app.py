@@ -325,7 +325,7 @@ def minmax(data):
             tmp.append((x - min(data)) / (max(data) - min(data)))
     return tmp
 
-def scan_load_data(_chr='chr1', scan_start=1, scan_end=10001, pos=100, strand='+',mm=False):
+def scan_load_data(_chr='chr1', scan_start=1, scan_end=10001, pos=100, strand='+',mm=False,step_size=1):
     # scan_halfsize = 5000
     # scan_start = scan
     # scan_end = pos + scan_halfsize + 1
@@ -333,8 +333,7 @@ def scan_load_data(_chr='chr1', scan_start=1, scan_end=10001, pos=100, strand='+
     valid_data = []
     valid_cage_cov = []
     valid_rnaseq_cov = []
-    scan_center=pos
-    for center in range(scan_start, scan_end):
+    for center in range(scan_start, scan_end,step_size):
         start = center - half_size
         end = center + half_size + 1
         coverage = []
@@ -451,14 +450,14 @@ def scan2fig(_chr, scan_start, scan_end, pos, strand, prediction_scan, scan_cage
     plt.savefig(scanfig_path + '/{}:{}...{};{};{}.png'.format(_chr, scan_start, scan_end, strand,pos))
     plt.close()
 
-def scan(sess, model, _chr='chr1', scan_start=1, scan_end=10001, pos=100, strand='+',mm=False,reducenoise=False):
+def scan(sess, model, _chr='chr1', scan_start=1, scan_end=10001, pos=100, strand='+',mm=False,reducenoise=False,step_size=1):
 
     _info = '[info]\tstart scanning {}:{}...{};{};{}'.format(_chr, scan_start, scan_end, strand, pos)
     print(_info)
 
     ### load data
     scan_data, scan_info, scan_seq, scan_cov, scan_label, scan_real_seq, scan_cage_cov, scan_rnaseq_cov = scan_load_data(
-        _chr, scan_start, scan_end, pos, strand,mm=mm)
+        _chr, scan_start, scan_end, pos, strand,mm=mm,step_size=step_size)
 
     ### start scan
 
@@ -495,6 +494,10 @@ if __name__ == '__main__':
         rnaseq_file_path_posi = sys.argv[6]
         rnaseq_file_path_neg = sys.argv[7]
         ref_file_path = sys.argv[8] #'ref/hg19/hg19.fa'
+        try:
+            step_size=int(sys.argv[9])
+        except:
+            step_size=1
 
         # 20000000 positions ~ 120G MEM
         # 3000 batch size ~ 6G GPU
@@ -543,6 +546,6 @@ if __name__ == '__main__':
                 else:
                     try:
                         scan(sess, model, _chr=_chr, scan_start=scan_start, scan_end=scan_end, pos=pos, strand=strand,
-                                 mm=mm, reducenoise=reducenoise)
+                                 mm=mm, reducenoise=reducenoise,step_size=step_size)
                     except:
                         print('*error*' * 10)

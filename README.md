@@ -136,7 +136,8 @@ python src/05.scan.app.py 0 data/colon \
      scan_regions/colon.RNAseq.bedgraph.merged \
      data/colon/rnaseq/Aligned.sortedByCoord.out.bam.+.depth \
      data/colon/rnaseq/Aligned.sortedByCoord.out.bam.-.depth \
-     ref/hg19/hg19.fa
+     ref/hg19/hg19.fa \
+     step_size (optional)
 ```
 
 Command above will start scanning all regions specified in the file `scan_regions/colon.RNAseq.bedgraph.merged.0.bed` and store all scanning result under `data/colon/scan_output`
@@ -146,7 +147,8 @@ To merge all individual scanning results into a complete bedgraph, run:
 ```
 python src/06.p2bed.py data/colon/scan_output \
      data/colon/scan_output.bedgraph \
-     scan_regions/colon.RNAseq.bedgraph.merged.bed
+     scan_regions/colon.RNAseq.bedgraph.merged.bed \
+     step_size (optional)
 ```
 
 Command above will output the merged complete bedgraph of all scanned positions, eg: `data/colon/scan_output.bedgraph`
