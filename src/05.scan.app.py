@@ -333,6 +333,7 @@ def scan_load_data(_chr='chr1', scan_start=1, scan_end=10001, pos=100, strand='+
     valid_data = []
     valid_cage_cov = []
     valid_rnaseq_cov = []
+    scan_center=pos
     for center in range(scan_start, scan_end,step_size):
         start = center - half_size
         end = center + half_size + 1
@@ -498,6 +499,13 @@ if __name__ == '__main__':
             step_size=int(sys.argv[9])
         except:
             step_size=1
+        try:
+            use_GPU=int(sys.argv[10])
+        except:
+            use_GPU=1
+        
+        if use_GPU==0:
+            os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 
         # 20000000 positions ~ 120G MEM
         # 3000 batch size ~ 6G GPU
