@@ -10,6 +10,7 @@ cat << EOF >log/cluster_$1.sh
 
 date
 module load bedtools
+cd /home/zhouj0d/c2066/DeeReCT-TSS_release/src
 bash /home/zhouj0d/c2066/DeeReCT-TSS_release/src/06.clusterTSS.sh \
 /home/zhouj0d/c2066/DeeReCT-TSS_release/data/$1/scan_regions.bedgraph \
 $1

@@ -22,18 +22,26 @@ if [ -z $2 ]; then
 fi
 deep_out=${1}
 label=${2}
-# default prediction score cut 1 
-scut=0.1
-# default distance to merge TSS into cluster is 10nt 
-dcut=10
-# default proability of a site not to be a TSS is 0.971 with score 0.1 
-prop=0.971
-if [ -z $3 ]; then
+
+if [ ! -z $3 ]; then
 	scut=$3
+else
+	# default prediction score cut 1 
+	scut=0.1
 fi
 
-if [ -z $4 ]; then
+if [ ! -z $4 ]; then
 	dcut=$4
+else
+	# default distance to merge TSS into cluster is 10nt 
+	dcut=10
+fi
+
+if [ ! -z $5 ]; then
+	prop=$5
+else
+	# default proability of a site not to be a TSS is 0.971 with score 0.1 
+	prop=0.971
 fi
 
 echo change to 0-based bed format 
@@ -46,6 +54,7 @@ echo change to 0-based bed format
 awk -v scut=$scut '{OFS="\t"}{if($4 > scut) print $1,$2 - 1,$3,$6,$4,$5}' $deep_out | grep -v "chrM" > ./tmp/$label.scut$scut.bed
 grep "chr1" ./tmp/$label.scut$scut.bed | sortBed -i - > ./tmp/$label.scut$scut.sorted.bed
 grep "chr[2-9XY]" ./tmp/$label.scut$scut.bed | sortBed -i - >> ./tmp/$label.scut$scut.sorted.bed
+
 
 echo clustering TSS 
 mergeBed -i ./tmp/$label.scut$scut.sorted.bed -s -d $dcut -c 4,5,6 -o first,sum,distinct > ./tmp/$label.scut$scut.dcut$dcut.merged.sum.bed
