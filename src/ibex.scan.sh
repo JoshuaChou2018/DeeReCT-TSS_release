@@ -1,4 +1,4 @@
-for i in {0..4}
+for i in {0..20}
 do
 
 cat << EOF >log/scanapp_$1_${i}.sh
@@ -24,7 +24,8 @@ python 05.scan.app.py $i \
 /home/zhouj0d/c2066/DeeReCT-TSS_release/data/$1/scan_regions/$1.RNAseq.bedgraph.merged \
 /home/zhouj0d/c2066/DeeReCT-TSS_release/data/$1/rnaseq/Aligned.sortedByCoord.out.bam.+.depth \
 /home/zhouj0d/c2066/DeeReCT-TSS_release/data/$1/rnaseq/Aligned.sortedByCoord.out.bam.-.depth \
-/home/zhouj0d/c2066/DeeReCT-TSS_release/ref/hg38/hg38.fa
+/home/zhouj0d/c2066/DeeReCT-TSS_release/ref/hg38/hg38.fa \
+5
 date
 EOF
 
