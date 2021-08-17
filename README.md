@@ -68,10 +68,10 @@ The reference genome file can be download from "https://www.gencodegenes.org" or
 The file marking the regions for scanning should be in "BED" format. A simple way to generate the file for scanning all protein coding genes is shown below:
 1, Download gene annotation (gtf file) from "http://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_38/gencode.v38.annotation.gtf.gz" 
 2, Select the rows including gene information, filter out the protein coding genes, extend 5kb from the gene start and convert to "BED" format 
-	```
-	zcat gencode.v38.annotation.gtf.gz | awk '$3 == "gene"' | grep "protein_coding" | awk '{OFS="\t"} {if($6 == "+") print $1,$2-5000,$3,$4,$5,$6; else print $1,$2,$3+5000,$4,$5,$6}' > gencode.v38.pcg.extups5k.bed
-	
-	```
+
+```
+zcat gencode.v38.annotation.gtf.gz | awk '$3 == "gene"' | grep "protein_coding" | awk '{OFS="\t"} {if($6 == "+") print $1,$2-5000,$3,$4,$5,$6; else print $1,$2,$3+5000,$4,$5,$6}' > gencode.v38.pcg.extups5k.bed
+```
 ## Acknowledgement
 
 This project is supported by KAUST and SUSTech. 
