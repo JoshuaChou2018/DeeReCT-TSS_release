@@ -37,7 +37,7 @@ The code is tested with the following dependencies:
 
 The code is not guaranteed to work if different versions are used. 
 
-To analyze bam files with a size around 10G, each thread requires 4-5G memory when the job is splitting into 25 threads. 
+To analyze bam files with a size around 10G, each thread requires 4-5G memory when the job is splitted into 25 threads. 
 
 ## Genome-wide TSS Scanning
 
@@ -65,8 +65,11 @@ bash ./run.sh \
 
 ## Reference preparation  
 The reference genome file can be download from "https://www.gencodegenes.org" or other database. i.e. Ensembl, UCSC and NCBI. 
+
 The file marking the regions for scanning should be in "BED" format. A simple way to generate the file for scanning all protein coding genes is shown below:
+
 1, Download gene annotation (gtf file) from "http://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_38/gencode.v38.annotation.gtf.gz" 
+
 2, Select the rows including gene information, filter out the protein coding genes, extend 5kb from the gene start and convert to "BED" format 
 
 ```
