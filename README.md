@@ -35,16 +35,18 @@ The code is tested with the following dependencies:
 - Samtools
 - Bedtools
 
-The code is not guaranteed to work if different versions are used.
+The code is not guaranteed to work if different versions are used. 
+
+To analyze bam files with a size around 10G, each thread requires 4-5G memory when the job is splitting into 25 threads. 
 
 ## Genome-wide TSS Scanning
 
 ```
 bash ./run.sh \
       path/to/Aligned.sortedByCoord.out.bam \  #(the aligned RNA-Seq bam file)
-      path/to/gencode.v38.pcg.extups5k.bed \  #(the file is provided under the folder /ref)
+      path/to/gencode.v38.pcg.extups5k.bed \  #(regions for scanning, a example file of all protein coding genes is provided under the folder /ref)
       path/to/model.npz \  #(the pre-trained models are provided under the folder /model)
-      path/to/reference_genome.fa \ #(the file is provided under the folder /ref)
+      path/to/reference_genome.fa \ #(reference genome sequencing in the "FASTA" format, a example file is provided under the folder /ref)
       path/to/output \
       0 \  #(0: CPU, 1: GPU)
       25  #(number of threads)
@@ -61,6 +63,15 @@ bash ./run.sh \
       25
 ```
 
+## Reference preparation  
+The reference genome file can be download from "https://www.gencodegenes.org" or other database. i.e. Ensembl, UCSC and NCBI. 
+The file marking the regions for scanning should be in "BED" format. A simple way to generate the file for scanning all protein coding genes is shown below:
+1, Download gene annotation (gtf file) from "http://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_38/gencode.v38.annotation.gtf.gz" 
+2, Select the rows including gene information, filter out the protein coding genes, extend 5kb from the gene start and convert to "BED" format 
+	```
+	zcat gencode.v38.annotation.gtf.gz | awk '$3 == "gene"' | grep "protein_coding" | awk '{OFS="\t"} {if($6 == "+") print $1,$2-5000,$3,$4,$5,$6; else print $1,$2,$3+5000,$4,$5,$6}' > gencode.v38.pcg.extups5k.bed
+	
+	```
 ## Acknowledgement
 
 This project is supported by KAUST and SUSTech. 
