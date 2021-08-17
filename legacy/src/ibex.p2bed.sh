@@ -11,7 +11,8 @@ cat << EOF >log/p2bed_$1.sh
 python /home/zhouj0d/c2066/DeeReCT-TSS_release/src/06.p2bed.py \
 /home/zhouj0d/c2066/DeeReCT-TSS_release/data/$1/scan_regions_out \
 /home/zhouj0d/c2066/DeeReCT-TSS_release/data/$1/scan_regions.bedgraph \
-/home/zhouj0d/c2066/DeeReCT-TSS_release/data/$1/scan_regions/$1.RNAseq.bedgraph.merged.bed
+/home/zhouj0d/c2066/DeeReCT-TSS_release/data/$1/scan_regions/$1.RNAseq.bedgraph.merged.bed \
+5
 
 EOF
 

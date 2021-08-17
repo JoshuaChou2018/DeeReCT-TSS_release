@@ -9,6 +9,8 @@ try:
     step_size=int(sys.argv[4])
 except:
     step_size=1
+    
+print('[INFO] step_size: {}'.format(step_size))
 
 cutoff=0.1
 with open(scan_save_path,'w') as w:
