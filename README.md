@@ -42,12 +42,12 @@ The code is not guaranteed to work if different versions are used.
 ```
 bash ./run.sh \
       path/to/Aligned.sortedByCoord.out.bam \  #(the aligned RNA-Seq bam file)
-      path/to/gencode.v38.pcg.extups5k.bed \  #(the file provided under the folder /ref)
+      path/to/gencode.v38.pcg.extups5k.bed \  #(the file is provided under the folder /ref)
       path/to/model.npz \  #(the pre-trained models are provided under the folder /model)
-      path/to/reference_genome.fa \ #(the file provided under the folder /ref)
+      path/to/reference_genome.fa \ #(the file is provided under the folder /ref)
       path/to/output \
       0 \  #(0: CPU, 1: GPU)
-      25
+      25  #(number of threads)
 
 eg:
 
