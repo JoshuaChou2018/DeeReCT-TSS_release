@@ -75,6 +75,14 @@ The file marking the regions for scanning should be in "BED" format. A simple wa
 ```
 zcat gencode.v38.annotation.gtf.gz | awk '$3 == "gene"' | grep "protein_coding" | awk '{OFS="\t"} {if($6 == "+") print $1,$2-5000,$3,$4,$5,$6; else print $1,$2,$3+5000,$4,$5,$6}' > gencode.v38.pcg.extups5k.bed
 ```
+
+## Output
+There will be two output files under the output directory: "combined.raw.prediction" and "combined.predicted.cluster"
+
+The former one is the raw prediction score in a extended bedgraph format from the deep learning model. Column 1-3 indicate the genomic coordiante, column 4 is the predcition score, and column 5 is the strand. 
+
+The later one is the final predicted TSS after clustering the raw prediction score in a extended bed format. Column 1-3 indicate the TSS loci, column 4 is the gene where the predicted TSS is associated, column 5 is the clustered prediction score, column 6 is the strand, and column 7 is a empirical P value.   
+
 ## Acknowledgement
 
 This project is supported by KAUST and SUSTech. 

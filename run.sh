@@ -25,7 +25,7 @@ thread=${7}
 
 ##
 #conda activate tss
-module load bedtools
+#module load bedtools
 ##
 
 echo processing bam file $bam ...
@@ -62,7 +62,11 @@ done
 wait
 #date
 echo merging the output cluster ...
-cat $out_dir/RNAseq.depth.part*cluster | ntersectBed -a - -b $bed_reg -s -wo | awk '{OFS="\t"}{print $1,$2,$3,$4,$11,$6,$7}' > $out_dir/combined.predicted.cluster
+cat $out_dir/RNAseq.depth.part*cluster | intersectBed -a - -b $bed_reg -s -wo | awk '{OFS="\t"}{print $1,$2,$3,$11,$4,$6,$7}' | sort -k 5 -r -n > $out_dir/combined.predicted.cluster
+rm -f $out_dir/*.part*cluster
+cat $out_dir/RNAseq.depth.part*.bedgraph > $out_dir/combined.raw.prediction
+rm -f $out_dir/RNAseq.depth.part*.bedgraph
+
 
 
 
