@@ -4,7 +4,7 @@
 
 ## Overview
 
-![20210311_Xin_Final_high-01](../../../Downloads/20210311_Xin_Final_high-01.jpg)
+![20210311_Xin_Final_high-01](https://cdn.jsdelivr.net/gh/JoshuaChou2018/oss@main/uPic/20210311_Xin_Final_high-01.086AK8.jpg)
 
 This repository contains the implementation of DeeReCT-TSS from 
 
