@@ -499,7 +499,7 @@ if __name__ == '__main__':
                 'tf_fc_init_weight': 0.02,
                 'tf_motif_weight_decay': 0.0004,
                 'tf_fc_weight_decay': 0.0003,
-                'tf_keep_prob': 0.5,
+                'tf_keep_prob': 1,
             }
         #hyper_dict=None
 
