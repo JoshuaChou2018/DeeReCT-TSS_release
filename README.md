@@ -18,16 +18,37 @@ Juexiao Zhou, Bin Zhang et al. DeeReCT-TSS: A novel meta-learning-based method a
 
 The code is tested with the following dependencies:
 
-- Python 3.6
-- Biopython 1.78
-- Numpy 1.19.2
-- Scipy 1.5.2
-- Scikit-learn 0.22.1
-- Tensorflow-gpu 1.14.0
+- python=3.6
+
+- biopython=1.78
+
+- bedtools=2.30.0
+
+- cudatoolkit=10.1.243
+
+- cudnn=7.6.5
+
+- numpy=1.19.2
+
+- scipy=1.5.2
+
+- pandas=1.1.3
+
+- scipy=1.5.2
+
+- scikit-learn 0.22.1
+
+- tensorflow-gpu=1.14.0
+
 - Seaborn 0.11.1
-- Matplotlib
-- Samtools
-- Bedtools
+
+- matplotlib=3.3.4
+
+- seaborn=0.11.1
+
+- samtools
+
+	
 
 The code is not guaranteed to work if different versions are used. 
 
