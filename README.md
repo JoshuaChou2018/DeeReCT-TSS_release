@@ -63,7 +63,7 @@ bash ./run.sh \
       path/to/model.npz \  #(the pre-trained models are provided under the folder /model)
       path/to/reference_genome.fa \ #(reference genome sequencing in the "FASTA" format, a example file is provided under the folder /ref)
       path/to/output \
-      0 \  #(0: CPU, 1: GPU)
+      0/1/2 ifstranded \
       25  #(number of threads)
 
 eg:
