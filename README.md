@@ -8,7 +8,7 @@
 
 This repository contains the implementation of DeeReCT-TSS from 
 
-Juexiao Zhou, Bin Zhang, et al. "DeeReCT-TSS: A novel meta-learning-based method annotates TSS in multiple cell types based on DNA sequences and RNA-seq data"
+Juexiao Zhou, Bin Zhang, et al. "Annotating TSSs in Multiple Cell Types Based on DNA Sequence and RNA-seq Data via DeeReCT-TSS"
 
 If you use our work in your research, please consider cite our paper:
 
